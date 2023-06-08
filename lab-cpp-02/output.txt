@@ -1,0 +1,33 @@
+Bird 1:
+  Is ringed: 1
+  Type: Sparrow
+  Age: 12
+  Nest:
+    Area: 100
+    Height: 20
+    Number of feeders: 2
+    Has nest: 1
+  Gender: man
+
+Bird 2:
+  Is ringed: 0
+  Type: Robin
+  Age: 8
+  Nest:
+    Area: 80
+    Height: 18
+    Number of feeders: 1
+    Has nest: 0
+  Gender: woman
+
+Bird 3:
+  Is ringed: 1
+  Type: Finch
+  Age: 10
+  Nest:
+    Area: 90
+    Height: 15
+    Number of feeders: 3
+    Has nest: 1
+  Gender: woman
+

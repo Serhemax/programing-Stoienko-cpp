@@ -1,0 +1,4 @@
+1, Sparrow, 3, 50, 10, 2, 1, man
+1, Sparrow, 3, 50, 10, 2, 1, man
+1, Sparrow, 3, 50, 10, 2, 1, man
+1, Sparrow, 3, 50, 10, 2, 1, woman
