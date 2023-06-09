@@ -41,6 +41,7 @@ Bird::Bird(const Bird& copy) {
 
 Bird Bird::createBirdFromInputString(const string& line) {
     Bird bird;
+
     istringstream iss(line);
     string token;
 
@@ -77,13 +78,16 @@ string Bird::toString() {
     ss << " Type: " << type << endl;
     ss << " Age: " << age << " months" << endl;
     ss << " Nest:" << endl;
-    ss << "  Area: " << area << " sq.cm" << endl;  
-    ss << "  Height: " << height << " cm" << endl;  
+    ss << "  Area: " << area << "sq. cm" << endl;
+    ss << "  Height: " << height << "cm" << endl;
     ss << "  Number of feeders: " << feeders << endl;
     ss << "  Has nest: " << has_nest << endl;
     ss << "  Gender: " << gender << "\n" << endl;
 
-    return ss.str();  
+    const string result = ss.str();
+
+    return result;
+
 }
 
 bool Bird::getIsringed() const
@@ -164,4 +168,87 @@ string Bird::getGender() const
 void Bird::setGender(string gender_)
 {
     this->gender = gender_;
+}
+
+Bird& Bird::operator=(const Bird& other) {
+    if (this == &other) {
+        return *this;
+    }
+
+    is_ringed = other.is_ringed;
+    type = other.type;
+    age = other.age;
+    area = other.area;
+    height = other.height;
+    feeders = other.feeders;
+    has_nest = other.has_nest;
+    gender = other.gender;
+
+    return *this;
+}
+
+
+bool Bird::operator==(const Bird& other) const {
+    return (is_ringed == other.is_ringed &&
+        this->type == other.type &&
+        this->age == other.age &&
+        this->area == other.area &&
+        this->height == other.height &&
+        this->feeders == other.feeders &&
+        this->has_nest == other.has_nest &&
+        this->gender == other.gender);
+}
+
+bool Bird::operator!=(const Bird& other) const {
+    return !(*this == other);
+}
+
+
+std::istream& operator>>(std::istream& is, Bird& bird) {
+    // Читання властивостей птаха з потоку введення
+    cout << "\n";
+    cout << " Is ringed (0 - no, 1 - yes): ";
+    is >> bird.is_ringed;
+    cout << "\n";
+
+    cout << " Type: ";
+    is >> bird.type;
+    cout << "\n";
+    cout << " Age: ";
+    is >> bird.age;
+    cout << "\n";
+    cin.ignore();
+
+    cout << " Nest:\n";
+    cout << "  Area: ";
+    is >> bird.area;
+    cout << "\n";
+    cout << "  Height: ";
+    is >> bird.height;
+    cout << "\n";
+    cout << "  Number of feeders: ";
+    is >> bird.feeders;
+    cout << "\n";
+    cout << "  Has nest (0 - no, 1 - yes): ";
+    is >> bird.has_nest;;
+    cout << "\n";
+    cout << "  Gender: ";
+    is >> bird.gender;
+    cout << "\n";
+
+    return is;
+}
+
+std::ostream& operator<<(std::ostream& os, const Bird& bird) {
+    os << "  Is ringed: " << bird.getIsringed() << "\n";
+    os << "  Type: " << bird.getType() << "\n";
+    os << "  Age: " << bird.getAge() << "\n";
+    os << "  Nest:\n";
+    os << "    Area: " << bird.getArea() << "\n";
+    os << "    Height: " << bird.getHeight() << "\n";
+    os << "    Number of feeders: " << bird.getFeeders() << "\n";
+    os << "    Has nest: " << bird.getHasnest() << "\n";
+    os << "  Gender: " << bird.getGender() << "\n";
+
+    return os;
 }

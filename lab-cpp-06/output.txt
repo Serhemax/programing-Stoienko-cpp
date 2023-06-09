@@ -1,0 +1,44 @@
+Bird 1:
+  Is ringed: 1
+  Type:  Sparrow
+  Age: 3
+  Nest:
+    Area: 50
+    Height: 10
+    Number of feeders: 2
+    Has nest: 1
+  Gender:  man
+
+Bird 2:
+  Is ringed: 1
+  Type:  Sparrow
+  Age: 3
+  Nest:
+    Area: 50
+    Height: 10
+    Number of feeders: 2
+    Has nest: 1
+  Gender:  man
+
+Bird 3:
+  Is ringed: 1
+  Type:  Sparrow
+  Age: 3
+  Nest:
+    Area: 50
+    Height: 10
+    Number of feeders: 2
+    Has nest: 1
+  Gender:  man
+
+Bird 4:
+  Is ringed: 1
+  Type:  Sparrow
+  Age: 3
+  Nest:
+    Area: 50
+    Height: 10
+    Number of feeders: 2
+    Has nest: 1
+  Gender:  woman
+

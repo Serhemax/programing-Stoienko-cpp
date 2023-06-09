@@ -72,9 +72,7 @@ Bird Bird::createBirdFromInputString(const string& line) {
     return bird;
 }
 
-
-// Функція для виведення масиву птахів на екран
-string Bird::toString() {
+string Bird::toString() const{
     stringstream ss;
     ss << " Is ringed: " << is_ringed << endl;
     ss << " Type: " << type << endl;
@@ -92,83 +90,165 @@ string Bird::toString() {
 
 }
 
-const bool Bird::getIsringed()
+bool Bird::getIsringed() const
 {
     return is_ringed;
 }
 
-void Bird::setIsringed(bool isringed)
+void Bird::setIsringed(bool isringed_)
 {
-    is_ringed = isringed;
+    is_ringed = isringed_;
 }
 
-const string Bird::getType()
+string Bird::getType() const
 {
     return type;
 }
 
-void Bird::setType(string type)
+void Bird::setType(string type_)
 {
-    this->type = type;
+    this->type = type_;
 }
 
-const int Bird::getAge()
+int Bird::getAge() const
 {
     return age;
 }
 
-void Bird::setAge(int age)
+void Bird::setAge(int age_)
 {
-    this->age = age;
+    this->age = age_;
 }
 
-const int Bird::getArea()
+int Bird::getArea() const
 {
     return area;
 }
 
-void Bird::setArea(int area)
+void Bird::setArea(int area_)
 {
-    this->area = area;
+    this->area = area_;
 }
 
-const int Bird::getHeight()
+int Bird::getHeight() const
 {
     return height;
 }
 
-void Bird::setHeight(int height)
+void Bird::setHeight(int height_)
 {
-    this->height = height;
+    this->height = height_;
 }
 
-const int Bird::getFeeders()
+int Bird::getFeeders() const
 {
     return feeders;
 }
 
-void Bird::setFeeders(int feeders)
+void Bird::setFeeders(int feeders_)
 {
-    this->feeders = feeders;
+    this->feeders = feeders_;
 }
 
-const bool Bird::getHasnest()
+bool Bird::getHasnest() const
 {
     return has_nest;
 }
 
-void Bird::setHasnest(bool hasnest)
+void Bird::setHasnest(bool hasnest_)
 {
-    has_nest = hasnest;
+    has_nest = hasnest_;
 }
 
-const string Bird::getGender()
+string Bird::getGender() const
 {
     return gender;
 }
 
-void Bird::setGender(string gender)
+void Bird::setGender(string gender_)
 {
-    this->gender = gender;
+    this->gender = gender_;
 }
 
+Bird& Bird::operator=(const Bird& other) {
+    if (this == &other) {
+        return *this;
+    }
+
+    is_ringed = other.is_ringed;
+    type = other.type;
+    age = other.age;
+    area = other.area;
+    height = other.height;
+    feeders = other.feeders;
+    has_nest = other.has_nest;
+    gender = other.gender;
+
+    return *this;
+}
+
+
+bool Bird::operator==(const Bird& other) const {
+    return (is_ringed == other.is_ringed &&
+        this->type == other.type &&
+        this->age == other.age &&
+        this->area == other.area &&
+        this->height == other.height &&
+        this->feeders == other.feeders &&
+        this->has_nest == other.has_nest &&
+        this->gender == other.gender);
+}
+
+bool Bird::operator!=(const Bird& other) const {
+    return !(*this == other);
+}
+
+
+std::istream& operator>>(std::istream& is, Bird& bird) {
+    // Читання властивостей птаха з потоку введення
+    cout << "\n";
+    cout << " Is ringed (0 - no, 1 - yes): ";
+    is >> bird.is_ringed;
+    cout << "\n";
+
+    cout << " Type: ";
+    is >> bird.type;
+    cout << "\n";
+    cout << " Age: ";
+    is >> bird.age;
+    cout << "\n";
+    cin.ignore();
+
+    cout << " Nest:\n";
+    cout << "  Area: ";
+    is >> bird.area;
+    cout << "\n";
+    cout << "  Height: ";
+    is >> bird.height;
+    cout << "\n";
+    cout << "  Number of feeders: ";
+    is >> bird.feeders;
+    cout << "\n";
+    cout << "  Has nest (0 - no, 1 - yes): ";
+    is >> bird.has_nest;;
+    cout << "\n";
+    cout << "  Gender: ";
+    is >> bird.gender;
+    cout << "\n";
+
+    return is;
+}
+
+std::ostream& operator<<(std::ostream& os, const Bird& bird) {
+    os << "  Is ringed: " << bird.getIsringed() << "\n";
+    os << "  Type: " << bird.getType() << "\n";
+    os << "  Age: " << bird.getAge() << "\n";
+    os << "  Nest:\n";
+    os << "    Area: " << bird.getArea() << "\n";
+    os << "    Height: " << bird.getHeight() << "\n";
+    os << "    Number of feeders: " << bird.getFeeders() << "\n";
+    os << "    Has nest: " << bird.getHasnest() << "\n";
+    os << "  Gender: " << bird.getGender() << "\n";
+
+    return os;
+}
