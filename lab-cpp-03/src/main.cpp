@@ -23,6 +23,11 @@ int main()
     birds.addBird(Bird());
     
     std::cout << birds;
+    
+    Bird d = b;
+    if(d == b){
+    	std::cout << d;
+    }
 
     std::ifstream inputFile("input.txt");
     if (inputFile) {

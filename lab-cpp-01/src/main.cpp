@@ -15,6 +15,8 @@ int main()
     birds.addBird(b);
     birds.addBird(Bird());
     birds.addBird(Bird());
+    
+    birds.print_birds();
 
     printf("Ratio of Women: %f ", birds.get_gender_ratio());
 
